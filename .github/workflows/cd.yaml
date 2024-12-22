@@ -18,6 +18,12 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.SSH_PORT }}
         script: |
+          export PATH=$PATH:/usr/local/bin:/usr/bin:/bin
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          node -v
+          npm -v
+          pm2 -v
           cd ~/auth-api
           git pull origin main
           npm install
